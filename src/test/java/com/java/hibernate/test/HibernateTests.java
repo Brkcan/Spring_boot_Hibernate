@@ -7,6 +7,10 @@ import org.hibernate.Transaction;
 import org.junit.Test;
 
 import com.java.hibernate.HibernateConfig;
+import com.java.hibernate.model.Address;
+import com.java.hibernate.model.Owner;
+import com.java.hibernate.model.OwnerWithCompositePK;
+import com.java.hibernate.model.OwnerWithCompositePK.OwnerId;
 import com.java.hibernate.model.Pet;
 
 public class HibernateTests {
@@ -61,7 +65,6 @@ public class HibernateTests {
 		Transaction transaction = session.beginTransaction();
 		 
 		Pet pet = new Pet("Davşan", new Date());
-		pet.setId(9);
 		session.persist(pet);
 		transaction.commit();
 		
@@ -77,5 +80,37 @@ public class HibernateTests {
 		transaction.commit();
 		session.close();
 	}
-
+	
+	@Test
+	public void testCompositePK() {
+		OwnerWithCompositePK owner = new OwnerWithCompositePK();
+		
+		OwnerId id = new OwnerId();
+		id.setFirstName("Burak");
+		id.setLastName("Can");
+		owner.setId(id);
+		
+		Session session = HibernateConfig.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		session.persist(owner);
+		transaction.commit();
+		session.close();
+	}
+	@Test 
+	public void testEmbeddable() {
+		Session session = HibernateConfig.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		Owner owner = new Owner();
+		owner.setFirstName("Burak");
+		owner.setLastName("Can");
+		
+		Address address = new Address();
+		address.setPhone("3213165916");
+		address.setStreet("Ankara");
+		owner.setAddress(address);
+		
+		session.persist(owner);
+		transaction.commit();
+		session.close();
+	}
 }

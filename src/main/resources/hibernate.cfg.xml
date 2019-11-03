@@ -10,5 +10,8 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
  
 		<mapping class="com.java.hibernate.model.Pet" />
+		<mapping class="com.java.hibernate.model.OwnerWithCompositePK" />
+		<mapping class="com.java.hibernate.model.Owner" />
+		<mapping class="com.java.hibernate.model.Address" />
 	</session-factory>
 </hibernate-configuration>
