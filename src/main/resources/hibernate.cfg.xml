@@ -13,5 +13,6 @@
 		<mapping class="com.java.hibernate.model.OwnerWithCompositePK" />
 		<mapping class="com.java.hibernate.model.Owner" />
 		<mapping class="com.java.hibernate.model.Address" />
+		<mapping class="com.java.hibernate.model.Vet" />
 	</session-factory>
 </hibernate-configuration>
