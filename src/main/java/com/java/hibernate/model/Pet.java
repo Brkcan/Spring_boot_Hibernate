@@ -5,7 +5,10 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,11 +16,12 @@ import javax.persistence.Table;
 public class Pet {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "id",columnDefinition = "int default 1")
+	@GeneratedValue(strategy  = GenerationType.IDENTITY)
 	private int id;
 
-	@Basic
-	@Column(name = "pet_name")
+	@Basic //(optional = true)
+	@Column(name = "pet_name") //nullable = false)
 	private String name;
 
 	@Column(name = "birth_date")
