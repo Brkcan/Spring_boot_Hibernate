@@ -1,5 +1,7 @@
 package com.java.hibernate.test;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
@@ -34,6 +36,23 @@ public class HibernateTests {
 
 		transaction.commit();
 		session.close();
+	}
+
+	@Test
+	public void testFieldLevelAccess() {
+		Session session = HibernateConfig.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+
+		Pet pet = new Pet("Köpek", new Date());
+		pet.setId(3);
+
+		session.persist(pet);
+		transaction.commit();
+		session.close();
+
+		session = HibernateConfig.getSessionFactory().openSession();
+		Pet pet2 = session.get(Pet.class, 3);
+		System.out.println(pet2);
 	}
 
 }
