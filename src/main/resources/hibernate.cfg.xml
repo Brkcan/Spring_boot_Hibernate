@@ -14,5 +14,8 @@
 		<mapping class="com.java.hibernate.model.Owner" />
 		<mapping class="com.java.hibernate.model.Address" />
 		<mapping class="com.java.hibernate.model.Vet" />
+		<mapping class="com.java.hibernate.model.ImageContent" />
+		<mapping class="com.java.hibernate.model.Visit" />
+		<mapping class="com.java.hibernate.model.Image" />
 	</session-factory>
 </hibernate-configuration>

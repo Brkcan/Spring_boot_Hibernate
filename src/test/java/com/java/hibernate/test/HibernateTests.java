@@ -1,6 +1,11 @@
 package com.java.hibernate.test;
 
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withBadRequest;
+
 import java.util.Date;
+
+import javax.persistence.Embedded;
+import javax.persistence.Enumerated;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,6 +17,8 @@ import com.java.hibernate.model.Owner;
 import com.java.hibernate.model.OwnerWithCompositePK;
 import com.java.hibernate.model.OwnerWithCompositePK.OwnerId;
 import com.java.hibernate.model.Pet;
+import com.java.hibernate.model.PhoneType;
+import com.java.hibernate.model.Rating;
 
 public class HibernateTests {
 
@@ -109,6 +116,25 @@ public class HibernateTests {
 		address.setStreet("Ankara");
 		owner.setAddress(address);
 		
+		session.persist(owner);
+		transaction.commit();
+		session.close();
+	}
+	@Test
+	public void testEnumerated() {
+		Session session = HibernateConfig.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		Owner owner = new Owner();
+		owner.setFirstName("Burak");
+		owner.setLastName("Can");
+		owner.setRating(Rating.PREMIUM);
+		
+		Address address = new Address();
+		address.setStreet("İstanbul");
+		address.setPhone("0000000");
+		address.setPhoneType(PhoneType.HOME);
+		
+		owner.setAddress(address);
 		session.persist(owner);
 		transaction.commit();
 		session.close();
