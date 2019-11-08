@@ -1,11 +1,7 @@
 package com.java.hibernate.test;
 
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withBadRequest;
 
 import java.util.Date;
-
-import javax.persistence.Embedded;
-import javax.persistence.Enumerated;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;

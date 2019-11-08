@@ -17,5 +17,9 @@
 		<mapping class="com.java.hibernate.model.ImageContent" />
 		<mapping class="com.java.hibernate.model.Visit" />
 		<mapping class="com.java.hibernate.model.Image" />
+		<mapping class="com.java.hibernate.model.City" />
+		<mapping class="com.java.hibernate.model.Clinic" />
+		<mapping class="com.java.hibernate.model.PetType" />
+		<mapping class="com.java.hibernate.model.Specialty" />
 	</session-factory>
 </hibernate-configuration>
